@@ -8,8 +8,24 @@ namespace GivenAStringCalculator
             {
                 return 0;
             }
-            return int.Parse(numbers);
-            
+
+            string[] splitNumbers = numbers.Split(',');
+
+            if (splitNumbers.Length == 1)
+            {
+                return int.Parse(numbers);
+
+            }
+
+            int total;
+            total = 0;
+
+            foreach (var number in splitNumbers)
+            {
+                total = total + int.Parse(number);
+            }
+
+            return total;
         }
     }
 }

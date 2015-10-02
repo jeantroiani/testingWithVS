@@ -23,14 +23,27 @@ namespace GivenAStringCalculator
     [TestFixture]
     public class WhenAddIsCalled_WithOneNumber
     {
-        [Test]
         [TestCase("1", 1)]
-        [TestCase("10", 9)]
         public void ThenTheArgumentIsReturned(string stringToConvert, int expected)
         {
             StringCalculator stringCalculator = new StringCalculator();
             int actual = stringCalculator.Add(stringToConvert);
             Assert.That(actual, Is.EqualTo(expected));
+        }
+    }
+
+    [TestFixture]
+    public class WhenAddIsCalled_WithOneAndTwo
+    {
+        [Test]
+
+        public void ThenThreeShouldBeReturned()
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+
+            int actual = stringCalculator.Add("1, 2");
+
+            Assert.That(actual, Is.EqualTo(3));
         }
     }
 }
