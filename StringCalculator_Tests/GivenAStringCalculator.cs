@@ -63,6 +63,20 @@ namespace GivenAStringCalculator
     }
 
     [TestFixture]
+    public class WhenAddIsCalled_WithUnknownAmountOfNumbersSeparatedByCommas
+    {
+        [Test]
+        public void ThenAllTheNumbersWillBeAddedTogether()
+        {
+            String numbers = "1,2,3,4,5";
+
+            StringCalculator stringCalculator = new StringCalculator();
+
+            Assert.That(stringCalculator.Add(numbers), Is.EqualTo(15));
+        }
+    }
+
+    [TestFixture]
     public class WhenAddIsCalled_WithOneTwoAndThreeSeparatedWithNewLines
     {
         [Test]
@@ -70,9 +84,21 @@ namespace GivenAStringCalculator
         {
             StringCalculator stringCalculator = new StringCalculator();
 
-            int actual = stringCalculator.Add("1/n2,3");
+            int actual = stringCalculator.Add("1\n2,3");
 
             Assert.That(actual, Is.EqualTo(6));
+        }
+    }
+
+    [TestFixture]
+    public class WhenAddIsCalled_WithACustomDelimeter
+    {
+        [TestCase("//|\n1|2")]
+        [TestCase("//*\n1*2")]
+        public void ThenTheSumOfAllNumbersShouldBeReturned(string a)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.That(stringCalculator.Add(a), Is.EqualTo(3));
         }
     }
 }
