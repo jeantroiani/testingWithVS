@@ -1,11 +1,14 @@
+using System;
+using System.Collections.Generic;
+
 namespace GivenAStringCalculator
 {
     public class StringCalculator
     {
-        public string FindDelimeter(string text)
+        public char[] FindDelimeter(string text)
         {
             var endOfCustomDelimeter = text.IndexOf("\n");
-            return text.Substring(2, endOfCustomDelimeter - 1);
+            return text.Substring(2, endOfCustomDelimeter - 1).ToCharArray();
         }
 
         public string RemoveDelimeter(string text)
@@ -14,6 +17,7 @@ namespace GivenAStringCalculator
             return text.Substring(endOfCustomDelimeter + 1);
         }
 
+
         public int Add(string numbers)
         {
             if (string.IsNullOrEmpty(numbers))
@@ -21,37 +25,64 @@ namespace GivenAStringCalculator
                 return 0;
             }
 
-            string[] splitNumbers;
+            string[] splitNumbers = GetNumbersFromInput(numbers);
 
-            if (numbers.IndexOf("//") == 0)
-            {
-                var delimeterRemoved = RemoveDelimeter(numbers);
-                var delimeter =FindDelimeter(numbers);
-                splitNumbers = delimeterRemoved.Split(delimeter.ToCharArray());
-            }
-            else
-            {
-
-                splitNumbers = numbers.Split(new char[] { ',', '\n' });
-                //EQUIVALENT FROM STRING: string[] splitNumbers = numbers.Split(',', '\n');
-                //EQUIVALENT FROM STRING: char[] test = ",\n".ToCharArray();
-            }
-
-            if (splitNumbers.Length == 1)
-            {
-                return int.Parse(numbers);
-
-            }
-
-            int total;
-            total = 0;
+            int total = 0;
+            List<int> negativeNumbers = new List<int>();
 
             foreach (var number in splitNumbers)
             {
-                total = total + int.Parse(number);
+                int i = int.Parse(number);
+                if (IsNegative(i)) 
+                {
+                    negativeNumbers.Add(i);
+                }
+                total = total + i;
+            }
+
+            if (negativeNumbers.Count > 0)
+            {
+                ThrowExceptionIfNegatives(negativeNumbers);
             }
 
             return total;
+        }
+
+        private static bool IsNegative(int numberToCheck)
+        {
+            return numberToCheck < 0;
+        }
+
+        private static void ThrowExceptionIfNegatives(List<int> numberToCheck)
+        {
+            var negativeNumberString = "";
+            foreach (var number in numberToCheck)
+            {
+                negativeNumberString += number.ToString();
+            }
+            throw new ArgumentOutOfRangeException(nameof(numberToCheck), $"negatives not allowed: {negativeNumberString}");
+        }
+
+        private string[] GetNumbersFromInput(string numbers)
+        {
+            string[] splitNumbers;
+            char[] delimeter = new char[] {',', '\n'};
+            string delimeterRemoved = numbers;
+            if (IsCustomDelimeter(numbers))
+            {
+                delimeterRemoved = RemoveDelimeter(numbers);
+                delimeter = FindDelimeter(numbers);
+
+            }
+
+            splitNumbers = delimeterRemoved.Split(delimeter);
+
+            return splitNumbers;
+        }
+
+        private static bool IsCustomDelimeter(string numbers)
+        {
+            return numbers.IndexOf("//") == 0;
         }
     }
 }

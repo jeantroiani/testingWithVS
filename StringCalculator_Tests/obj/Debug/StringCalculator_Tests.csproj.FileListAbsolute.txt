@@ -12,13 +12,6 @@ C:\Users\jtroiani\Desktop\testingWithVS\StringCalculator_Tests\bin\Debug\nunit.f
 C:\Users\jtroiani\Desktop\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.csprojResolveAssemblyReference.cache
 C:\Users\jtroiani\Desktop\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.dll
 C:\Users\jtroiani\Desktop\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.pdb
-C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.csprojResolveAssemblyReference.cache
-C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.dll
-C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.pdb
-C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\StringCalculator_Tests.dll
-C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\StringCalculator_Tests.pdb
-C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\nunit.framework.dll
-C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\nunit.framework.xml
 C:\Users\JEAN\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\StringCalculator_Tests.dll
 C:\Users\JEAN\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\StringCalculator_Tests.pdb
 C:\Users\JEAN\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\nunit.framework.dll
@@ -26,3 +19,10 @@ C:\Users\JEAN\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculat
 C:\Users\JEAN\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.csprojResolveAssemblyReference.cache
 C:\Users\JEAN\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.dll
 C:\Users\JEAN\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.pdb
+C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\StringCalculator_Tests.dll
+C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\StringCalculator_Tests.pdb
+C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\nunit.framework.dll
+C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\bin\Debug\nunit.framework.xml
+C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.dll
+C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.pdb
+C:\Users\jtroiani\Documents\Visual Studio 2015\Projects\testingWithVS\StringCalculator_Tests\obj\Debug\StringCalculator_Tests.csprojResolveAssemblyReference.cache

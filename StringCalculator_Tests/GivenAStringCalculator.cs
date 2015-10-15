@@ -101,5 +101,37 @@ namespace GivenAStringCalculator
             Assert.That(stringCalculator.Add(a), Is.EqualTo(3));
         }
     }
+
+    [TestFixture]
+    public class WhenAddIsCalled_WithANegativeNumber
+    {
+        [TestCase("1, -1")]
+        public void ThenAnErrorShouldReturn(string a)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.Throws<ArgumentOutOfRangeException>(() => stringCalculator.Add(a), "When adding a negative number an ArgumentOutOfRangeException should be thrown");
+        }
+    }
+
+    [TestFixture]
+    public class WhenAddIsCalled_WithNegativeNumbers
+    {
+        [TestCase("1, -2")]
+        [Ignore]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),ExpectedMessage = "negatives not allowed: -2 Parameter name: numberToCheck")]
+        public void ThenAnErrorShouldReturnListingAllNegativeNumbers(string a)
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            try
+            {
+                stringCalculator.Add(a);
+            }
+            catch (Exception ex)
+            {
+                var test = ex;
+                throw;
+            }
+        }
+    }
 }
 
