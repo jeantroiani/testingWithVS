@@ -5,16 +5,16 @@ namespace GivenAStringCalculator
 {
     public class StringCalculator
     {
-        public char[] FindDelimeter(string text)
+        private readonly StringCalculatorArgumentParser _stringCalculatorArgumentParser;
+
+        public StringCalculator()
         {
-            var endOfCustomDelimeter = text.IndexOf("\n");
-            return text.Substring(2, endOfCustomDelimeter - 1).ToCharArray();
+            _stringCalculatorArgumentParser = new StringCalculatorArgumentParser();
         }
 
-        public string RemoveDelimeter(string text)
+        public StringCalculatorArgumentParser StringCalculatorArgumentParser
         {
-            var endOfCustomDelimeter = text.IndexOf("\n");
-            return text.Substring(endOfCustomDelimeter + 1);
+            get { return _stringCalculatorArgumentParser; }
         }
 
 
@@ -25,7 +25,7 @@ namespace GivenAStringCalculator
                 return 0;
             }
 
-            string[] splitNumbers = GetNumbersFromInput(numbers);
+            string[] splitNumbers = _stringCalculatorArgumentParser.GetNumbersFromInput(numbers);
 
             int total = 0;
             List<int> negativeNumbers = new List<int>();
@@ -33,10 +33,14 @@ namespace GivenAStringCalculator
             foreach (var number in splitNumbers)
             {
                 int i = int.Parse(number);
-                if (IsNegative(i)) 
+
+                if (IsNegative(i))
                 {
                     negativeNumbers.Add(i);
                 }
+
+                i = ZeroIfIsBiggerThanOneThousand(i);
+
                 total = total + i;
             }
 
@@ -46,6 +50,15 @@ namespace GivenAStringCalculator
             }
 
             return total;
+        }
+
+        private static int ZeroIfIsBiggerThanOneThousand(int i)
+        {
+            if (i > 999)
+            {
+                i = 0;
+            }
+            return i;
         }
 
         private static bool IsNegative(int numberToCheck)
@@ -61,28 +74,6 @@ namespace GivenAStringCalculator
                 negativeNumberString += number.ToString();
             }
             throw new ArgumentOutOfRangeException(nameof(numberToCheck), $"negatives not allowed: {negativeNumberString}");
-        }
-
-        private string[] GetNumbersFromInput(string numbers)
-        {
-            string[] splitNumbers;
-            char[] delimeter = new char[] {',', '\n'};
-            string delimeterRemoved = numbers;
-            if (IsCustomDelimeter(numbers))
-            {
-                delimeterRemoved = RemoveDelimeter(numbers);
-                delimeter = FindDelimeter(numbers);
-
-            }
-
-            splitNumbers = delimeterRemoved.Split(delimeter);
-
-            return splitNumbers;
-        }
-
-        private static bool IsCustomDelimeter(string numbers)
-        {
-            return numbers.IndexOf("//") == 0;
         }
     }
 }

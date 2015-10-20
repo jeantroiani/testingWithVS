@@ -91,7 +91,7 @@ namespace GivenAStringCalculator
     }
 
     [TestFixture]
-    public class WhenAddIsCalled_WithACustomDelimeter
+    public class WhenAddIsCalled_WithACustomDelimeterOfFixedLength
     {
         [TestCase("//|\n1|2")]
         [TestCase("//*\n1*2")]
@@ -117,20 +117,39 @@ namespace GivenAStringCalculator
     public class WhenAddIsCalled_WithNegativeNumbers
     {
         [TestCase("1, -2")]
-        [Ignore]
-        [ExpectedException(typeof(ArgumentOutOfRangeException),ExpectedMessage = "negatives not allowed: -2 Parameter name: numberToCheck")]
+     
+        [ExpectedException(typeof(ArgumentOutOfRangeException),ExpectedMessage = "negatives not allowed: -2\r\nParameter name: numberToCheck")]
         public void ThenAnErrorShouldReturnListingAllNegativeNumbers(string a)
         {
             StringCalculator stringCalculator = new StringCalculator();
-            try
-            {
-                stringCalculator.Add(a);
-            }
-            catch (Exception ex)
-            {
-                var test = ex;
-                throw;
-            }
+            stringCalculator.Add(a);
+
+        }
+    }
+
+    [TestFixture]
+
+    public class WhenAddIsCalled_WithNumbersBiggerThan1000
+    {
+        [Test]
+
+        public void ThoseShouldBeIgnored()
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.That(stringCalculator.Add("2, 1000"), Is.EqualTo(2));
+        }
+    }
+
+    [TestFixture]
+
+    public class WhenAddIsCalled_WithACustomDelimeterOfAnyLength
+    {
+        [Test]
+        [Ignore]
+        public void ThenTheSumOfAllNumbersShouldBeReturned()
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.That(stringCalculator.Add("//[***]\n1***2***3"),Is.EqualTo(6));
         }
     }
 }
