@@ -145,11 +145,11 @@ namespace GivenAStringCalculator
     public class WhenAddIsCalled_WithACustomDelimeterOfAnyLength
     {
         [Test]
-        [Ignore]
+
         public void ThenTheSumOfAllNumbersShouldBeReturned()
         {
             StringCalculator stringCalculator = new StringCalculator();
-            Assert.That(stringCalculator.Add("//[***]\n1***2***3"),Is.EqualTo(6));
+            Assert.That(stringCalculator.Add("//****\n1****2****3"),Is.EqualTo(6));
         }
     }
 }

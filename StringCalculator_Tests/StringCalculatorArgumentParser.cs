@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace GivenAStringCalculator
 {
     public class StringCalculatorArgumentParser
@@ -5,17 +8,18 @@ namespace GivenAStringCalculator
         internal string[] GetNumbersFromInput(string numbers)
         {
             string[] splitNumbers;
-            char[] delimeter = new char[] {',', '\n'};
+            var delimeter = new[] { ",", "\n" };
+
             string delimeterRemoved = numbers;
 
             if (IsCustomDelimeter(numbers))
             {
                 delimeterRemoved = RemoveDelimeter(numbers);
-                delimeter = FindDelimeter(numbers);
-
+                delimeter = new [] {FindDelimeter(numbers)};
+                
             }
 
-            splitNumbers = delimeterRemoved.Split(delimeter);
+            splitNumbers = delimeterRemoved.Split(delimeter, StringSplitOptions.RemoveEmptyEntries);
 
             return splitNumbers;
         }
@@ -31,10 +35,11 @@ namespace GivenAStringCalculator
             return text.Substring(endOfCustomDelimeter + 1);
         }
 
-        public char[] FindDelimeter(string text)
+        public string FindDelimeter(string text)
         {
             var endOfCustomDelimeter = text.IndexOf("\n");
-            return text.Substring(2, endOfCustomDelimeter - 1).ToCharArray();
+            return text.Substring(2, endOfCustomDelimeter - 2);
         }
+
     }
 }
