@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GivenAStringCalculator
@@ -15,7 +16,7 @@ namespace GivenAStringCalculator
             if (IsCustomDelimeter(numbers))
             {
                 delimeterRemoved = RemoveDelimeter(numbers);
-                delimeter = new [] {FindDelimeter(numbers)};
+                delimeter = FindDelimeter(numbers);
                 
             }
 
@@ -35,10 +36,27 @@ namespace GivenAStringCalculator
             return text.Substring(endOfCustomDelimeter + 1);
         }
 
-        public string FindDelimeter(string text)
+        public string[] FindDelimeter(string text)
         {
             var endOfCustomDelimeter = text.IndexOf("\n");
-            return text.Substring(2, endOfCustomDelimeter - 2);
+            var stringOfDelimeters = text.Substring(2, endOfCustomDelimeter - 2);
+            var listOfDelimeters = new List<string>();
+
+            for (int i = 0; i < stringOfDelimeters.Length; i++)
+                
+            {
+                var indexOfDelimeter = listOfDelimeters.IndexOf(stringOfDelimeters[i].ToString());
+
+                if (indexOfDelimeter < 0)
+                {
+                    listOfDelimeters.Add(stringOfDelimeters[i].ToString());
+                }
+                else
+                {
+                    listOfDelimeters[indexOfDelimeter] += stringOfDelimeters[i];
+                }
+            }
+            return listOfDelimeters.ToArray();
         }
 
     }

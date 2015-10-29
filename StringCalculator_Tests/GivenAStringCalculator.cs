@@ -152,5 +152,18 @@ namespace GivenAStringCalculator
             Assert.That(stringCalculator.Add("//****\n1****2****3"),Is.EqualTo(6));
         }
     }
+
+    [TestFixture]
+
+    public class WhenAddIsCalled_WithMultipleCustomDelimeters
+    {
+        [Test]
+
+        public void ThenTheSumOfAllNumbersShouldBeREturned()
+        {
+            StringCalculator stringCalculator = new StringCalculator();
+            Assert.That(stringCalculator.Add("//*%\n1*2%3"), Is.EqualTo(6));
+        }
+    }
 }
 
